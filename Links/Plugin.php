@@ -3,7 +3,7 @@
  * 基于 Hanny 修改的友情链接插件，能适应于 Rozv for Typecho.
  * 
  * @package Links
- * @author Noisky &Hanny
+ * @author Noisky & Hanny
  * @version 1.1.2
  * @dependence 14.10.10-*
  * @link http://www.noisky.cn
@@ -265,11 +265,11 @@ class Links_Plugin implements Typecho_Plugin_Interface
 			return '友情链接插件未激活';
 		}
 		if (!isset($pattern) || $pattern == "" || $pattern == NULL || $pattern == "SHOW_TEXT") {
-			$pattern = "<a href=\"{url}\" title=\"{title}\" target=\"_blank\">{name}</a>\n";
+			$pattern = "<nav><a href=\"{url}\" title=\"{title}\" target=\"_blank\">{name}</a></nav>\n";
 		} else if ($pattern == "SHOW_IMG") {
-			$pattern = "<a href=\"{url}\" title=\"{title}\" target=\"_blank\"><img src=\"{image}\" alt=\"{name}\" /></a>\n";
+			$pattern = "<nav><a href=\"{url}\" title=\"{title}\" target=\"_blank\"><img src=\"{image}\" alt=\"{name}\" /></a></nav>\n";
 		} else if ($pattern == "SHOW_MIX") {
-			$pattern = "<a href=\"{url}\" title=\"{title}\" target=\"_blank\"><img src=\"{image}\" alt=\"{name}\" /><span>{name}</span></a>\n";
+			$pattern = "<nav><a href=\"{url}\" title=\"{title}\" target=\"_blank\"><img src=\"{image}\" alt=\"{name}\" /><span>{name}</span></a></nav>\n";
 		}
 		$db = Typecho_Db::get();
 		$prefix = $db->getPrefix();
@@ -299,8 +299,6 @@ class Links_Plugin implements Typecho_Plugin_Interface
 				$pattern
 			);
 		}
-		$str = '<div class="panel panel-info"><h3 class="panel-title">友情链接</h3></a><div class="links_box">'
-		.$str.'</div></div>';
 		return $str;
 	}
 
